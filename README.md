@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ZendSkeletonApplication
 =======================
 
@@ -75,3 +76,9 @@ project and you should be ready to go! It should look something like below:
             Allow from all
         </Directory>
     </VirtualHost>
+=======
+testimony
+=========
+
+Repo for Jesus Testimony
+>>>>>>> 3eafaf8d3f90456deee3f75cb04333ddae1c1948
