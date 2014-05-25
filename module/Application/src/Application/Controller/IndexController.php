@@ -11,6 +11,20 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+require('Zend.php');
+
+include 'smarty/Smarty.class.php';
+$smarty = new Smarty();
+$smarty->debugging = false;
+$smarty->force_compile = true;
+$smarty->caching = false;
+$smarty->compile_check = true;
+$smarty->cache_lifetime = -1;
+$smarty->template_dir = 'resources/templates';
+$smarty->compile_dir = 'resources/templates_c';
+$smarty->plugins_dir = array(
+  SMARTY_DIR . 'plugins',
+  'resources/plugins');
 
 class IndexController extends AbstractActionController
 {
