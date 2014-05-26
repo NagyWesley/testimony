@@ -20,6 +20,7 @@ return array(
                     ),
                 ),
             ),
+            
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -99,4 +100,21 @@ return array(
             ),
         ),
     ),
+    
+    //doctrine
+    
+'doctrine' => array(
+  'driver' => array(
+    'application_entities' => array(
+      'class' =>'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+      'cache' => 'array',
+      'paths' => array(__DIR__ . '/../Entity')
+    ),
+
+    'orm_default' => array(
+      'drivers' => array(
+        'Application\Entity' => 'application_entities'
+      )
+))),
+    
 );
