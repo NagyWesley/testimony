@@ -15,8 +15,28 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'User\Controller\User',
+                        'controller' => 'Application\Controller\Index',
                         'action'     => 'index',
+                    ),
+                ),
+            ),
+             'login' => array(
+                'type' => 'literal',
+                'options' => array(
+                    'route' => '/login',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Login',
+                        'action' => 'login',
+                    ),
+                ),
+            ),
+            'registration' => array(
+                'type' => 'literal',
+                'options' => array(
+                    'route' => '/registration',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Login',
+                        'action' => 'register',
                     ),
                 ),
             ),
@@ -61,6 +81,10 @@ return array(
         'aliases' => array(
             'translator' => 'MvcTranslator',
         ),
+        'adapter' => array(
+             'Zend\Db\Adapter\Adapter'
+                     => 'Zend\Db\Adapter\AdapterServiceFactory',
+         ),
     ),
     'translator' => array(
         'locale' => 'en_US',
@@ -74,7 +98,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Login' => 'Application\Controller\LoginController'
         ),
     ),
     'view_manager' => array(
@@ -108,7 +133,7 @@ return array(
     'application_entities' => array(
       'class' =>'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
       'cache' => 'array',
-      'paths' => array(__DIR__ . '/../Entity')
+      'paths' =>array(__DIR__ . '/../src/Application/Entity')
     ),
 
     'orm_default' => array(

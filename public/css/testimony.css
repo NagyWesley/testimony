@@ -1,60 +1,68 @@
 body {
-	margin-top: 50px; /* 50px is the height of the navbar - change this if the navbarn height changes */
+/*background-color: #413A30;*/
 }
 
 .full-width-image-1 {
-	background: url(../../img/header.jpg) no-repeat center center;
-	/*background-size: cover;*/
-	text-align: center;
-        background-size: 120%;
-	
+    background: url(../../img/header.jpg) no-repeat center center;
+    /*background-size: cover;*/
+    text-align: center;
+    background-size: 100%;
+    height: 324px;
+    margin-top:  -10px;
 }
 
 .full-width-image-2 {
-	background: url(http://lorempixel.com/g/1920/450/) no-repeat center center;
-	background-size: cover;
-	text-align: center;
-	height: 450px;
+    background: url(http://lorempixel.com/g/1920/450/) no-repeat center center;
+    background-size: cover;
+    text-align: center;
+    height: 450px;
 }
 
+
 .logo-wrapper {
-	display: inline-block;
+    display: inline-block;
 }
 .header-image{
-    background-size:cover;
-    
+
+
 }
 .section {
-	padding-top: 75px;
-	padding-bottom: 75px;
+    padding-top: 75px;
+    padding-bottom: 75px;
 }
 
 .section-heading {
-	font-size: 4em;
-	margin: 30px 0;
+    font-size: 4em;
+    margin: 30px 0;
 }
 
 .section-lead {
-	margin: 30px 0;
+    margin: 30px 0;
 }
 
 .section-paragraph {
-	margin: 30px 0;
+    margin: 30px 0;
 }
 
 footer {
-	margin: 50px 0;
+    margin: 50px 0;
+}
+p{
+    color:whitesmoke;
+}
+h1{
+    color: whitesmoke;
 }
 
 @media (max-width: 768px) {
 
-.section-heading {
-	font-size: 2em;
-}
+    .section-heading {
+        font-size: 2em;
+    }
 
-.section {
-	padding-top: 25px;
-	padding-bottom: 25px;
-}
+    .section {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
 
 }

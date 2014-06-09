@@ -1,0 +1,16 @@
+
+<div class="col-md-3 " >
+<?php
+if(!is_null($messages))
+{
+    foreach ($messages as $message)
+    echo $message;
+}
+$loginForm->setAttribute('action',$this->url());
+
+$loginForm->prepare();
+
+echo $this->form()->openTag($loginForm);
+echo $this->formCollection($loginForm);
+echo $this->form()->closeTag();  ?>
+</div>
