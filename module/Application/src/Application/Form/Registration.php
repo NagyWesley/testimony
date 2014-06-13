@@ -7,15 +7,15 @@ use Zend\Form\Form;
 class Registration extends Form
 {
 
-    public function __construct($db = null)
+    public function __construct()
     {
         parent::__construct("Registration Form");
 
         $this->setAttribute('method', 'post');
         $this->add(array(
             'name' => 'fullname',
+            'type' => 'text',
             'attributes' => array(
-                'type' => 'text',
                 'style' => "margin-left: 10px"
             ),
             'filters' => array(
@@ -23,25 +23,30 @@ class Registration extends Form
                     'name' => 'StringTrim'
                 )
             ),
-            'validators' => array(
-                array(
-                    "name" => "sallary",
-                    'type' => 'Zend\Form\Element\Number',
-                    'attributes' => array(
-                        'min' => 5,
-                        'step' => 1
-                    ),
-                ),
-            ),
             'options' => array(
                 'label' => 'Full Name',
             ),
         ));
 
         $this->add(array(
-            'name' => 'password',
+            'name' => 'userName',
+            'type' => 'text',
             'attributes' => array(
-                'type' => 'password',
+                'style' => "margin-left: 5px"
+            ),
+            'filters' => array(
+                array(
+                    'name' => 'StringTrim'
+                )
+            ),
+            'options' => array(
+                'label' => 'User Name',
+            ),
+        ));
+        $this->add(array(
+            'name' => 'password',
+            'type' => 'password',
+            'attributes' => array(
                 'style' => "margin-left: 10px"
             ),
             'options' => array(
@@ -51,9 +56,9 @@ class Registration extends Form
 
         $this->add(array(
             'name' => 'email',
+            'type' => 'email',
             'attributes' => array(
-                'type' => 'email',
-                'style' => "margin-left: 40px;margin-right: 10px"
+                'style' => "margin-left: 40px;"
             ),
             'options' => array(
                 'label' => 'Email',

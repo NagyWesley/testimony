@@ -1,0 +1,19 @@
+    -> SELECT t FROM Testimony t WHERE t.status = 1 or 0 ORDER BY t.id DESC;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '\Entity
+SELECT t FROM Testimony t WHERE t.status = 1 or 0 ORDER BY t.id DESC' at line 1
+mysql>  SELECT t FROM Testimony t WHERE t.status = 1 or 0 ORDER BY t.id DESC;
+ERROR 1054 (42S22): Unknown column 't' in 'field list'
+mysql>  SELECT t FROM Testimony as t WHERE t.status = 1 or 0 ORDER BY t.id DESC;
+ERROR 1054 (42S22): Unknown column 't' in 'field list'
+mysql>  SELECT * FROM Testimony as t WHERE t.status = 1 or 0 ORDER BY t.id DESC;
++----+-----------+-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------------+
+| id | author_id | title | content                                                                                                                                                          | status | created             |
++----+-----------+-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------------+
+|  3 |        17 | test  | test                                                                                                                                                             |      1 | 2014-06-11 16:23:55 |
+|  2 |        13 | Mercy | Jesus poured HIS blood for us... he didn't consider the glory that HE was Living in a thing for us... what is the love that makes HIM leave every thing for us?? |      1 | 2014-06-10 13:51:50 |
+|  1 |         1 | Grace | the grace of god ovewhelmes me... you should have some for your own                                                                                              |      1 | 2014-06-09 14:21:08 |
++----+-----------+-------+------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------+---------------------+
+3 rows in set (0.00 sec)
+
+mysql> Ctrl-C -- exit!
+Aborted

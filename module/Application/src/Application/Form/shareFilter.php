@@ -5,76 +5,71 @@ namespace Application\Form;
 use Zend\InputFilter\InputFilter;
 use Zend\Validator\NotEmpty;
 
-class RegistrationFilter extends InputFilter
+class shareFilter extends InputFilter
 {
 
-    public function __construct($db)
+    public function __construct()
     {
         $this->add(
                 array(
-                    'name' => 'fullname',
+                    'name' => 'userName',
                     'required' => true,
+                    'allowNull' => false,
                     'validators' => array(
                         array(
                             'name' => 'NotEmpty',
                             'options' => array(
                                 'messages' => array(
-                                    \Zend\Validator\NotEmpty::IS_EMPTY => 'Your Full Name is required.'
-                                )
+                                    \Zend\Validator\NotEmpty::IS_EMPTY => 'You need to login to be able to share.'
+                                ),
                             )
                         ),
                     )
-        ));
+                )
+        );
+
         $this->add(
                 array(
-                    'name' => 'password',
+                    'name' => 'title',
                     'required' => true,
                     'validators' => array(
                         array(
                             'name' => 'NotEmpty',
                             'options' => array(
                                 'messages' => array(
-                                    \Zend\Validator\NotEmpty::IS_EMPTY => 'Password is required.'
-                                )
+                                    \Zend\Validator\NotEmpty::IS_EMPTY => 'Title is required'
+                                ),
+                            )
+                        ),
+                    )
+                )
+        );
+        $this->add(
+                array(
+                    'name' => 'content',
+                    'required' => true,
+                    'validators' => array(
+                        array(
+                            'name' => 'NotEmpty',
+                            'options' => array(
+                                'messages' => array(
+                                    \Zend\Validator\NotEmpty::IS_EMPTY => 'Content is required.'
+                                ),
+                                'class' => "test"
                             )
                         ),
                         array(
                             'name' => 'StringLength',
                             'options' => array(
-                                'min' => 6,
+                                'min' => 50,
                                 'messages' => array(
-                                    \Zend\Validator\StringLength::TOO_SHORT=> 'Password Must be Greater than 6 characters.'
+                                    \Zend\Validator\StringLength::TOO_SHORT => 'Work of GOD is HUGE, please put more words in it. (min. 50 charcter)'
                                 )
                             )
                         ),
                     )
-        ));
-        $this->add(
-                array(
-                    'name' => 'email',
-                    'required' => true,
-                    'validators' => array(
-                        array(
-                            'name' => 'NotEmpty',
-                            'options' => array(
-                                'messages' => array(
-                                    \Zend\Validator\NotEmpty::IS_EMPTY => 'Your Email Address is required.'
-                                )
-                            )
-                        ),
-                        array(
-                            'name' => '\Zend\Validator\Db\NoRecordExists',
-                            'options' => array(
-                                'table' => 'User',
-                                'field' => 'email',
-                                'adapter' => $db,
-                                'messages' => array(
-                                    \Zend\Validator\Db\RecordExists::ERROR_RECORD_FOUND => 'EmailAddress is already in use.'
-                                )
-                            )
-                        ),
-                    )
-        ));
+                )
+        );
     }
 
 }

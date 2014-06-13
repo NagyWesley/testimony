@@ -1,8 +1,28 @@
-<div class="row">
-    <div class="col-md-12">
-      <div class="main-icon text-success"><span class="uxicon uxicon-clock-refresh"></span></div>
-      <h1>"The testimony of Jesus is the spirit of prophecy" REV 19:10</h1>
-      <p class="lead">This site is dedicated to talk about the Grace of Jesus Christ and HIS Miracles</p>
-      <p class="lead">The site should be built soon... until that you are welcomed to contact us at info@jtestimony.com</p>
+
+<div >
+    <h4  class="intro-head">
+
+        The Word of <strong>God</strong> is focused on the works of <strong>Jesus</strong>.
+        As He is alive, He is still doing His Works, Mircales, Healing the sick and Raising the dead.
+        JTestiony.com will serve as a memorial for remembering <strong>Jesus</strong>'s Works.
+    </h4>
+</div>
+    <div class="col-sm-3" style="float: right; border:2px solid whitesmoke; padding:10px;">
+        Did Jesus touch you or your circumctances? Please <a href="/share">Share</a> what happend with us.
     </div>
-  </div>
+<div class="index-testimony-list ">
+    
+    <h2 class="index-testimony-header">Latest Testimonies</h2>
+    <?php foreach ($tests as $test) { ?>
+    <div class="index-testimony-title">
+    <h4>    <?php echo $test['title'] ?></h4>
+           
+    </div>
+
+    <div class="index-testimony-body">
+        <p> <?php echo $test['content'] ?></p>
+    </div>
+    <a href="/testimony/<?php echo $test['id'] ?>" class="index-continue">continue reading...</a>
+    <hr>
+<?php } ?>
+</div>

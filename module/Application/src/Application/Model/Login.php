@@ -3,6 +3,8 @@
 namespace Application\Model;
 
 use Zend\Crypt\Password\Apache;
+use Zend\Session\Container;
+use Zend\Authentication\AuthenticationService;
 
 class Login
 {
@@ -15,15 +17,18 @@ class Login
 
     public function __construct($ad)
     {
-        $this->_adapter = new \Zend\Authentication\Adapter\DbTable($ad, 'User', 'email', 'password');
+        $this->_adapter = new \Zend\Authentication\Adapter\DbTable($ad, 'User', 'user_name', 'password');
     }
 
     public function auth($params)
     {
-        $this->_adapter->setIdentity($params['email']);
+        $this->_adapter->setIdentity($params['userName']);
         $this->_adapter->setCredential($params['password']);
         $this->_adapter->setCredentialTreatment('MD5(?)');
-        $result = $this->_adapter->authenticate();
+        
+        $auth = new AuthenticationService();
+        $result = $auth->authenticate($this->_adapter);
+        
         return $result;
     }
 //

@@ -5,7 +5,9 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Model\User;
-use Application\Form\RegistrationFilter as RegFilter;
+use Application\Form\RegistrationFilter as regFilter;
+use Application\Form\LoginFilter as logFilter;
+use Zend\Session\Container;
 
 class LoginController extends AbstractActionController
 {
@@ -26,7 +28,7 @@ class LoginController extends AbstractActionController
 
 
         $registerForm = new \Application\Form\Registration();
-        $registerForm->setInputFilter(new RegFilter($ad));
+        $registerForm->setInputFilter(new regFilter($ad));
 
         if ($this->getRequest()->isPost()) {
             $formData = $this->getRequest()->getPost();
@@ -70,9 +72,13 @@ class LoginController extends AbstractActionController
 
     public function loginAction()
     {
-
+        if (!is_null($this->identity())) {
+            $this->layout()->identity = $this->identity();
+            return $this->redirect()->toRoute("home");
+        }
         $loginForm = new \Application\Form\Login();
-        
+        $loginForm->setInputFilter(new logFilter());
+
 
         $this->flashMessenger()->addMessage("correct");
         if ($this->getRequest()->isPost()) {
@@ -92,19 +98,29 @@ class LoginController extends AbstractActionController
 
                 if ($result->isValid()) {
 
-                    
-                    return $this->redirect()->toRoute("application");
+                    $share_storage = new Container('share');
+                    if (!is_null($share_storage->formData)) {
+                        return $this->redirect()->toRoute("share");
+                    }
+                    return $this->redirect()->toRoute("home");
                 } else {
-                    $this->_view->messages= $result->getMessages();
-                    
+                    $this->_view->messages = $result->getMessages();
                 }
             }
         }
 
-        
+
         $this->_view->loginForm = $loginForm;
-        
+
         return $this->_view;
+    }
+
+    public function logoutAction()
+    {
+
+        $authService = $this->getServiceLocator()->get('AuthService');
+        $authService->clearIdentity();
+        return false;
     }
 
 }

@@ -1,11 +1,13 @@
 
 <div class="col-md-3 " >
-<?php
-$registerForm->setAttribute('action',$this->url());
-$registerForm->prepare();
+    <?php
+    $registerForm->setAttribute('action', $this->url());
+    $registerForm->prepare();
 
-echo $this->form()->openTag($registerForm);
-echo $this->formCollection($registerForm);
-echo $this->form()->closeTag();  
-?>
+    echo $this->form()->openTag($registerForm);
+    echo $this->formCollection($registerForm);
+    echo $this->form()->closeTag();
+    ?>
+    <br>
+    <p>Already have an account? <a href="login" >Login</a></p>
 </div>

@@ -1,5 +1,5 @@
 body {
-    padding-top: 60px;
+    
     padding-bottom: 40px;
 }
 
@@ -31,7 +31,7 @@ body {
 }
 
 div.container a.brand {
-    background: url("../img/zf2-logo.png") no-repeat scroll 0 10px transparent;
+    background: url("../img/header.jpg") no-repeat scroll 0 10px transparent;
     margin-left: 0;
     padding: 8px 20px 12px 40px;
 }

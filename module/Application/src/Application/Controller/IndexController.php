@@ -15,26 +15,25 @@ class IndexController extends AbstractActionController
 
     public function __construct()
     {
-
-
         $this->_view = new ViewModel();
     }
 
-    public function editAction()
-    {
-        
-    }
 
     public function indexAction()
     {
-            $em = $this->getServiceLocator()
-                        ->get('Doctrine\ORM\EntityManager');
-        $this->_model = new \Application\Model\User($em);
-        $this->_view->users=$this->_model->getUsers();
-        
+        $this->layout()->identity = $this->identity();
+
+        $em = $this->getServiceLocator()
+                ->get('Doctrine\ORM\EntityManager');
+        $this->_model = new \Application\Model\Testimony($em);
+        $this->_view->tests = $this->_model->getLatest();
+
         return $this->_view;
+    }
+    
+    public function wordsAction()
+    {
         
     }
-
 
 }

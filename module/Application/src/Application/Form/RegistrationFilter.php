@@ -43,7 +43,7 @@ class RegistrationFilter extends InputFilter
                             'options' => array(
                                 'min' => 6,
                                 'messages' => array(
-                                    \Zend\Validator\StringLength::TOO_SHORT=> 'Password Must be Greater than 6 characters.'
+                                    \Zend\Validator\StringLength::TOO_SHORT => 'Password Must be Greater than 6 characters.'
                                 )
                             )
                         ),
@@ -74,7 +74,36 @@ class RegistrationFilter extends InputFilter
                             )
                         ),
                     )
-        ));
+                )
+        );
+        
+        $this->add(
+                array(
+                    'name' => 'userName',
+                    'required' => true,
+                    'validators' => array(
+                        array(
+                            'name' => 'NotEmpty',
+                            'options' => array(
+                                'messages' => array(
+                                    \Zend\Validator\NotEmpty::IS_EMPTY => 'User Name  is required.'
+                                )
+                            )
+                        ),
+                        array(
+                            'name' => '\Zend\Validator\Db\NoRecordExists',
+                            'options' => array(
+                                'table' => 'User',
+                                'field' => 'user_name',
+                                'adapter' => $db,
+                                'messages' => array(
+                                    \Zend\Validator\Db\RecordExists::ERROR_RECORD_FOUND => 'User Name is already in use.'
+                                )
+                            )
+                        ),
+                    )
+                )
+        );
     }
 
 }

@@ -4,16 +4,12 @@ namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/** @ORM\Entity */
-/*
- * Commands with doctrine:
- * 1-validate mapping
- * ./vendor/bin/doctrine-module orm:validate-schema
- * 
- * 2-generate database
- * ./vendor/bin/doctrine-module orm:schema-tool:create
+/**
+ * Product
+ *
+ * @ORM\Table(name="User")
+ * @ORM\Entity
  */
-
 class User
 {
 
@@ -28,6 +24,9 @@ class User
      * @ORM\Column(type="integer")
      */
     protected $id;
+
+    /** @ORM\Column(type="string",nullable=false) */
+    protected $user_name;
 
     /** @ORM\Column(type="string") */
     protected $full_name;
@@ -102,6 +101,16 @@ class User
     public function setRole($role)
     {
         $this->role = $role;
+    }
+
+    public function getUser_name()
+    {
+        return $this->user_name;
+    }
+
+    public function setUser_name($user_name)
+    {
+        $this->user_name = $user_name;
     }
 
 }

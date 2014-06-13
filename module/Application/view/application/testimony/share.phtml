@@ -1,0 +1,26 @@
+
+<div >
+    <h4  class="share-header">
+    "I am pleased to tell you about the miracles and wonders the Most High God has done for me." Dan 4:2
+    </h4>
+    <p>Please share what God Has done, we can't exaggerate His Goodness, details are very important.</p>
+</div>
+<div class="share-body ">
+
+<?php
+
+$shareForm->setAttribute('action',$this->url());
+
+$shareForm->prepare();
+
+echo $this->form()->openTag($shareForm);
+echo $this->formCollection($shareForm);
+echo $this->form()->closeTag();  ?>
+    
+    
+    <p>JTestimony.com reserves the right to remove any testimonies that isn't matching the policy.</p>
+</div>
+
+
+
+
